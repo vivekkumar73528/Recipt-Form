@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="style.css">
+   
+    <title>Receipt</title>
+    <style>
+        .receipt-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: auto;
+        }
+        .receipt-container h1 {
+            text-align: center;
+        }
+        .receipt-container p {
+            margin: 10px 0;
+        }
+        .button-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .button-container button {
+            padding: 10px 20px;
+            margin: 5px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .print-button {
+            background-color: #28a745;
+            color: white;
+        }
+        .pdf-button {
+            background-color: #007bff;
+            color: white;
+        }
+        h1{
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo-img">
+            <img src="logo.jpg" alt="Logo">
+        </div>
+        <h1>HINDUJA LEYLAND FINANCE</h1>
+        <h2>27A, Development Industrial Estate</h2>
+        <h3>Guindy, Chennai.</h3>
+    </div>
+
+    <div class="brd">
+        <hr>
+        <h1>R E C E I P T</h1>
+        <hr>
+    </div>
+    <div class="receipt-container" id="receiptContent">
+        <h1>Receipt Details</h1>
+        <div id="receiptDetails"></div>
+        <div class="button-container">
+            <!-- <button class="print-button" onclick="printReceipt()">Print Receipt</button> -->
+           
+            
+        </div>
+    </div>
+    <button class="pdf-button" onclick="downloadPDF()">Download PDF</button>
+    <!-- Include jsPDF and html2canvas libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.6.0/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.5.0/html2canvas.min.js"></script>
+
+    <script>
+    function getQueryParams() {
+        const params = new URLSearchParams(window.location.search);
+        const data = {};
+        for (const [key, value] of params.entries()) {
+            data[key] = decodeURIComponent(value); // Decode URI components
+        }
+        return data;
+    }
+
+    function displayReceipt() {
+        const data = getQueryParams();
+        const receiptDetails = document.getElementById('receiptDetails');
+
+        // Create HTML content with variables
+        let html = `
+
+            <h1>Receipt No:${data.receiptNo}</h1>
+            <p><strong>Date:</strong> ${data.date}</p>
+            <p><strong>Time:</strong> ${data.time}</p>
+            <p><strong>Customer Code:</strong> ${data.customerCodeName}</p>
+            <p><strong>Name:</strong> ${data.name}</p>
+            <p><strong>Contract No:</strong> ${data.contractNo}</p>
+            <p><strong>Amount Paid:</strong> ${data.amountPaid}</p>
+            <p><strong>Total:</strong> ${data.total}</p>
+            <p><strong>By Cash:</strong> ${data.cash}</p>
+            <p><strong>Received By Code:</strong> ${data.receivedByCode}</p>
+            <p><strong>Received By Name:</strong> ${data.receivedByName}</p>
+            <p><strong>Received From:</strong> ${data.receivedFrom}</p>
+            <p><strong>Mobile:</strong> ${data.Mobile}</p>
+        `;
+
+        // Insert the HTML into the page
+        receiptDetails.innerHTML = html;
+    }
+
+    function printReceipt() {
+        window.print(); // Trigger the print dialog
+    }
+    displayReceipt();
+    </script>
+
+</body>
+</html>

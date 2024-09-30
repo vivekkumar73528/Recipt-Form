@@ -1,0 +1,55 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+   
+    
+        font-family: "Poppins", sans-serif;
+        /* font-weight: 300; */
+        font-style: normal;
+
+      
+    
+
+}
+
+.container {
+
+    text-align: center;
+    padding: 20px;
+}
+
+.logo-img {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.logo-img img {
+    max-width: 10%;
+    height: auto;
+}
+
+h1,
+h2,
+h3 {
+    margin: 10px 0;
+}
+
+.brd {
+    text-align: center;
+    margin: 15px 0;
+}
+
+.brd h1 {
+    margin: 10px 0;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.brd hr {
+    width: 100%;
+    border: 1px solid #ddd;
+    margin: 10px auto;
+}

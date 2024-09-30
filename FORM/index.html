@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<style>
+   
+    .form-container {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        max-width: 600px;
+        margin: auto;
+    }
+    .form-group {
+        margin-bottom: 15px;
+    }
+    .form-group label {
+        display: block;
+        margin-bottom: 5px;
+    }
+    .form-group input, .form-group select {
+        width: 100%;
+        padding: 8px;
+        box-sizing: border-box;
+    }
+    .form-group input[type="date"], .form-group input[type="time"] {
+        padding: 6px;
+    }
+    .form-group input[type="submit"] {
+        background-color: #28a745;
+        color: white;
+        border: none;
+        cursor: pointer;
+        padding: 10px 15px;
+        font-size: 16px;
+    }
+    .form-group input[type="submit"]:hover {
+        background-color: #218838;
+    }
+
+
+</style>
+<body>
+
+    <div class="container">
+    <div class="form-container">
+        <div class="container">
+            <div class="logo-img">
+                <img src="logo.jpg" alt="Logo">
+            </div>
+            <h1>HINDUJA LEYLAND FINANCE</h1>
+            <h2>27A, Development Industrial Estate</h2>
+            <h3>Guindy, Chennai.</h3>
+        </div>
+
+        <div class="brd">
+            <hr>
+            <h1>R E C E I P T</h1>
+            <hr>
+        </div>
+
+        <form id="myForm" onsubmit="handleFormSubmit(event)">
+            <div class="form-group">
+                <label for="receiptNo">Receipt No:</label>
+                <input type="text" id="receiptNo" name="receiptNo" required>
+            </div>
+            <div class="form-group">
+                <label for="date">Date:</label>
+                <input type="date" id="date" name="date" required>
+            </div>
+            <div class="form-group">
+                <label for="time">Time:</label>
+                <input type="time" id="time" name="time" required>
+            </div>
+            <div class="form-group">
+                <label for="customerCodeName">Customer Code:</label>
+                <input type="text" id="customerCodeName" name="customerCodeName" required>
+            </div>
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="contractNo">Contract No:</label>
+                <input type="text" id="contractNo" name="contractNo" required>
+            </div>
+            <div class="form-group">
+                <label for="amountPaid">Amount Paid (in Rupees):</label>
+                <input type="number" id="amountPaid" name="amountPaid" required>
+            </div>
+            <div class="form-group">
+                <label for="total">Total:</label>
+                <input type="number" id="total" name="total" required>
+            </div>
+            <div class="form-group">
+                <label for="cash">By Cash:</label>
+                <input type="text" id="cash" name="cash" value="By Cash" required>
+            </div>
+            <div class="form-group">
+                <label for="receivedByCode">Received By Code:</label>
+                <input type="text" id="receivedByCode" name="receivedByCode" required>
+            </div>
+            <div class="form-group">
+                <label for="receivedByName">Received By Name:</label>
+                <input type="text" id="receivedByName" name="receivedByName" required>
+            </div>
+            <div class="form-group">
+                <label for="receivedFrom">Received From:</label>
+                <input type="tel" id="receivedFrom" name="receivedFrom" required>
+            </div>
+            <div class="form-group">
+                <label for="Mobile">Mobile:</label>
+                <input type="tel" id="Mobile" name="Mobile" required>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Submit">
+            </div>
+        </form>
+       
+    </div>
+    </div>
+ 
+<script>
+    function handleFormSubmit(event) {
+        event.preventDefault(); // Prevent the default form submission
+    
+        // Collect form data
+        const formData = new FormData(document.getElementById('myForm'));
+    
+        // Convert form data to query string
+        const queryString = new URLSearchParams(formData).toString();
+    
+        // Redirect to the new page with the query string
+        window.location.href = `receipt.html?${queryString}`;
+    }
+
+  
+    </script>
+</body>
+</html>
